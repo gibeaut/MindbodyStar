@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MindbodyStar.Tests.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="MindbodyStar_Tests_MindbodyClassService_Class_x0020_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://api.mindbodyonline.com/0_5_1/ClassService.asmx</Value>
+    </Setting>
+    <Setting Name="MindbodyStar_Tests_MindbodyClientService_Client_x0020_Service" Type="(Web Service URL)" Scope="Application">
+      <Value Profile="(Default)">https://api.mindbodyonline.com/0_5_1/ClientService.asmx</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

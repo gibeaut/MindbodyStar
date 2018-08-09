@@ -1,0 +1,53 @@
+﻿@model MindbodyStar.Models.StarLoadViewModel
+@{
+    ViewBag.Title = "Star Board Load";
+    Layout = "../Shared/_Layout.cshtml";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $('#SubmitButton').on('click',
+            function() {
+                $("#LoadArea").attr("display", "none");
+
+                $('#LoadForm').submit();
+            });
+    });
+
+</script>
+
+<h2>Star Board Load</h2>
+<div style="display: table; padding-left: 50px;" >
+    @using (Html.BeginForm("NewStarBoard", "Star", FormMethod.Post, new {id = "LoadForm"}))
+    {
+        <div style="display: block;" id="LoadArea">
+        <div style="display: table-row">
+            <div style="display: table-row">
+                @Html.LabelFor(m => m.Username)
+            </div>
+            <div style="display: table-row">
+                @Html.TextBoxFor(m => m.Username)
+            </div>
+        </div>
+        <div style="display: table-row">
+            <div style="display: table-row">
+                @Html.LabelFor(m => m.Password)
+            </div>
+            <div style="display: table-row">
+                @Html.PasswordFor(m => m.Password)
+            </div>
+        </div>
+        <div style="display: table-row">
+            <div style="display: table-row">
+                @Html.LabelFor(m => m.StudioID)
+            </div>
+            <div style="display: table-row">
+                @Html.TextBoxFor(m => m.StudioID)
+            </div>
+        </div>
+        <br/>
+            <input id="SubmitButton" type="submit" value="Load" />
+        </div>
+    }
+</div>

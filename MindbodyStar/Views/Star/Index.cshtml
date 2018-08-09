@@ -1,0 +1,19 @@
+﻿@model MindbodyStar.Models.StarViewModel
+
+@{
+    ViewBag.Title = "Star Board";
+    Layout = "../Shared/_Layout.cshtml";
+}
+<div style="padding-left: 50px;">
+    <h2>Star Board</h2>
+    <div>
+        Star Board will display client sign-ins for classes in the past 30 days.
+    </div>
+
+    @foreach (var studioid in Model.StudioIDs)
+    {
+        <div style="width: 60px; height: 60px; border: navy 2px solid; text-align: center">
+            @Html.ActionLink(studioid.ToString(), "StarBoard", "Star", new { studioid = studioid }, new { style = "text-decoration: none; font-size: 26px; text-align: center;" })
+        </div>
+    }
+</div>

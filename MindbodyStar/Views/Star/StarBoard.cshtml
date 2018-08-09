@@ -1,0 +1,194 @@
+﻿@model MindbodyStar.Models.StarBoardViewModel
+
+@{
+    ViewBag.Title = "StarBoard";
+    Layout = "../Shared/_Layout.cshtml";
+}
+<style>
+
+    h1 {
+        font-family: marker;
+        font-size: 32px;
+    }
+
+    h2 {
+        font-family: marker;
+        font-size: 28px;
+    }
+
+    .name-1 {
+        font-family: pete;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    .name-2 {
+        font-family: homemade-apple;
+        font-size: 18px;
+    }
+
+    .name-3 {
+        font-family: crayon-crumble;
+        font-size: 18px;
+    }
+
+    .color-1 {
+        color: purple;
+    }
+
+    .color-2 {
+        color: palevioletred;
+    }
+
+    .color-3 {
+        color: royalblue;
+    }
+
+    .color-4 {
+        color: green;
+    }
+
+    .color-5 {
+        color: navy;
+    }
+
+    .color-6 {
+        color: black;
+    }
+
+    .size-1 {
+        font-size: 22px;
+    }
+
+    .size-2 {
+        font-size: 26px;
+    }
+
+    .size-3 {
+        font-size: 30px;
+    }
+
+    .star-1 {
+        content: url("../../Images/blue_star.png");
+        display: inline;
+        height: 30px;
+        width: 30px;
+    }
+
+    .star-2 {
+        content: url("../../Images/green_star.png");
+        display: inline;
+        height: 30px;
+        width: 30px;
+    }
+
+    .star-3 {
+        content: url("../../Images/orange_star.png");
+        display: inline;
+        height: 30px;
+        width: 30px;
+    }
+
+    .star-4 {
+        content: url("../../Images/pink_star.png");
+        display: inline;
+        height: 30px;
+        width: 30px;
+    }
+
+    .star-5 {
+        content: url("../../Images/purple_star.png");
+        display: inline;
+        height: 30px;
+        width: 30px;
+    }
+
+    .star-6 {
+        content: url("../../Images/red_star.png");
+        display: inline;
+        height: 30px;
+        width: 30px;
+    }
+
+    .list {
+        color: #555;
+        font-size: 22px;
+        padding: 0 !important;
+        width: 100%;
+        font-family: courier, monospace;
+        border: 1px solid #dedede;
+    }
+
+    .list li {
+        list-style: none;
+        border-bottom: 1px dotted #ccc;
+        text-indent: 25px;
+        height: auto;
+        padding: 10px;
+        text-transform: capitalize;
+    }
+
+    .list li:hover {
+        background-color: #f0f0f0;
+        -webkit-transition: all 0.2s;
+        -moz-transition:    all 0.2s;
+        -ms-transition:     all 0.2s;
+        -o-transition:      all 0.2s;
+    }
+
+    .lines {
+         border-left: 1px solid #ffaa9f;
+         border-right: 1px solid #ffaa9f;
+         width: 2px;
+         float: left;
+         margin-left: 40px;
+     }
+
+</style>
+<div style="text-align: center">
+    <h1>
+        Star Board Last @String.Format("{0}",(int)Model.Stars.getTotalDays())
+        @if (Model.Stars.getTotalDays() == 1)
+        {
+            <span>Day</span>
+        }
+        else
+        {
+            <span>Days</span>
+        }
+    </h1>
+    <h2> @Model.Stars.StartDate.ToShortDateString() - @Model.Stars.EndDate.ToShortDateString() </h2>
+</div>
+<div class="lines" style="height: @(Model.Stars.ClientList.Count * 63)px"></div>
+<div style="width: 100%">
+    <div>
+        <ul class="list">
+            @{
+                Random rnd = new Random();
+
+                foreach (var client in Model.Stars.ClientList)
+                {
+                    if (!client.ClientID.Equals("-2"))
+                    {
+                        var fontNumber = rnd.Next(1, 4);
+                        var colorNumber = rnd.Next(1, 7);
+                        var sizeNumber = rnd.Next(1, 4);
+                                <li>
+                                    <div>
+                                <div class="name-@fontNumber color-@colorNumber size-@sizeNumber" style="display: table-cell;">@client.DisplayName:</div>
+                                <div style="display: table-cell" title="@client.NumberOfVisits">
+                                    @for (var i = 0; i < client.NumberOfVisits; i++)
+                                    {
+                                        var starNumber = (rnd.Next(1, 100) % 6) + 1;
+
+                                        <div class="star-@starNumber">&nbsp;</div>
+                                    }
+                                </div>
+                                    </div>
+                        </li>
+                }
+            }
+        }
+        </ul>
+    </div>
+</div>
